@@ -7,7 +7,7 @@ while (1) {
     flag_pass_entered = 1;
   } else {
     if (pin === pass) {
-      console.log("Welcome to your bank account.\nPlease enter the number of the operation you want to perform\n1. Deposit\n2. Withdraw\n3. Check Balance");
+      console.log("Please enter the number of the operation you want to perform\n1. Deposit\n2. Withdraw\n3. Check Balance");
       let operation = Number(prompt("Enter the operation number: "));
       switch (operation) {
         case 1:
