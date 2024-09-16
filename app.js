@@ -7,33 +7,31 @@ while (1) {
     flag_pass_entered = 1;
   } else {
     if (pin === pass) {
-      console.log("Please enter the number of the operation you want to perform\n1. Deposit\n2. Withdraw\n3. Check Balance");
+      console.log(
+        "Please enter the number of the operation you want to perform\n1. Deposit\n2. Withdraw\n3. Check Balance"
+      );
       let operation = Number(prompt("Enter the operation number: "));
       switch (operation) {
         case 1:
-          let deposit = Number(prompt("Enter the amount to deposit: "));
-          balance += deposit;
-          console.log(`Your balance is: ${balance}`);
+          Diposit();
           break;
         case 2:
-          let withdraw = Number(prompt("Enter the amount to withdraw: "));
-          if (withdraw <= balance) {
-            balance -= withdraw;
-            console.log(`Your balance is: ${balance}`);
-          } else {
-            console.log("Insufficient balance.");
-          }
+          Withdraw();
           break;
         case 3:
-          console.log(`Your balance is: ${balance}`);
+          ViewBalance();
           break;
         default:
           console.log("Invalid operation number.");
       }
+      
       let anoter__op = prompt("Do you want to do another operation?\nyes\tno");
-      if (anoter__op == "yes") {
+      if (anoter__op.toLowerCase() == "yes") {
         continue;
+      } else if (anoter__op.toLowerCase() == "no") {
+        break;
       } else {
+        console.log("Invalid answer.");
         break;
       }
     } else {
@@ -42,4 +40,23 @@ while (1) {
       continue;
     }
   }
+}
+
+function Diposit() {
+  let depositamount = Number(prompt("Enter the amount to deposit: "));
+  balance += depositamount;
+  ViewBalance();
+}
+
+function Withdraw() {
+  let withdrawamount = Number(prompt("Enter the amount to withdraw: "));
+  if (withdrawamount <= balance) {
+    balance -= withdrawamount;
+    ViewBalance();
+  } else {
+    console.log("Insufficient balance.");
+  }
+}
+function ViewBalance() {
+  console.log(`Your balance is: ${balance}`);
 }
